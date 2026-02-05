@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог товаров | Nova Store</title>
+    <meta
+      name="description"
+      content="Современный каталог товаров: актуальные цены, подробные описания, удобный поиск и быстрая заявка."
+    />
+    <meta
+      name="keywords"
+      content="каталог товаров, купить онлайн, товары, цены, оставить заявку"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f4f5f7" />
+    <meta property="og:title" content="Каталог товаров | Nova Store" />
+    <meta
+      property="og:description"
+      content="Удобный каталог с поиском, описаниями и быстрым оформлением заявки."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <main>
+      <section class="catalog-header" id="catalog">
+        <div>
+          <h1 id="catalogTitle">Каталог товаров</h1>
+          <p>Нажмите на товар, чтобы оставить заявку менеджеру.</p>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Поиск товаров..." />
+          <span class="search-icon">⌕</span>
+        </div>
+      </section>
+
+      <section class="grid" id="productGrid"></section>
+
+      <section class="info" id="about">
+        <div class="info-card">
+          <h2>О нас</h2>
+          <p>
+            Мы создаем чистый, современный опыт покупок с акцентом на комфорт и
+            скорость.
+          </p>
+        </div>
+        <div class="info-card" id="contacts">
+          <h2>Контакты</h2>
+          <p>support@novastore.ru</p>
+          <p>+7 (900) 000-00-00</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Nova Store. Все права защищены.</p>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="modal" id="leadModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="lead"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3>Оставить заявку</h3>
+          <button class="icon-btn" data-close="lead">✕</button>
+        </div>
+        <form id="leadForm" class="modal-body">
+          <div class="lead-product" id="leadProduct"></div>
+          <label>
+            Имя
+            <input type="text" id="leadName" required />
+          </label>
+          <label>
+            Телефон
+            <input
+              type="tel"
+              id="leadPhone"
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+          </label>
+          <button class="btn phone-btn" type="submit">
+            <span class="phone-icon" aria-hidden="true">☎</span>
+            Отправить заявку
+          </button>
+        </form>
+        <div class="lead-success" id="leadSuccess" aria-hidden="true">
+          <div class="success-icon">✓</div>
+          <h4>Спасибо, заявка принята</h4>
+          <p>Менеджер свяжется с вами в ближайшее время.</p>
+          <button class="btn ghost" data-close="lead">Закрыть</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="editModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="edit"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3>Редактирование товара</h3>
+          <button class="icon-btn" data-close="edit">✕</button>
+        </div>
+        <form id="editForm" class="modal-body">
+          <label>
+            Название
+            <input type="text" id="editName" required />
+          </label>
+          <label>
+            Описание
+            <input type="text" id="editDesc" required />
+          </label>
+          <label>
+            Цена, ₽
+            <input type="number" id="editPrice" min="0" step="1" required />
+          </label>
+          <label>
+            Ссылка на изображение
+            <input type="url" id="editImage" placeholder="https://..." />
+          </label>
+          <label>
+            Загрузить изображение (с компьютера)
+            <input type="file" id="editImageFile" accept="image/*" />
+          </label>
+          <label>
+            SEO ключевые слова (через запятую)
+            <input type="text" id="editKeywords" />
+          </label>
+          <label>
+            Теги (через запятую)
+            <input type="text" id="editTags" />
+          </label>
+          <button class="btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <script id="schemaData" type="application/ld+json"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
